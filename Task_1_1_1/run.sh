@@ -14,7 +14,7 @@ javac -d out src/main/java/ru/nsu/oop/Main.java
 # 4. -subpackages SOMETHING - просто пакеты
 javadoc -d doc -sourcepath src/main/java -subpackages ru.nsu.oop
 
-# 1. java - упаковщик.
+# 1. jar - упаковщик.
 # 2. --create - создаем файлик
 # 3. --file SOMETHING - название файла
 # 4. --main-class ru.nsu.oop.Main - какой вообще метод нужно запускать
