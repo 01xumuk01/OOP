@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/OOP.iml" filepath="$PROJECT_DIR$/.idea/OOP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_1_1_1.iml" filepath="$PROJECT_DIR$/Task_1_1_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_1_1.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_1_1.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_1_1.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_1_1.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_1_1_2.iml" filepath="$PROJECT_DIR$/Task_1_1_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_1_2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_1_2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_1_2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_1_2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_1_1_3.iml" filepath="$PROJECT_DIR$/Task_1_1_3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_1_3.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_1_3.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_1_3.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_1_3.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_1_2_1.iml" filepath="$PROJECT_DIR$/Task_1_2_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_2_1.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_2_1.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_2_1.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_2_1.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_1_2_2.iml" filepath="$PROJECT_DIR$/Task_1_2_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_2_2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_2_2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_2_2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_2_2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_1_3_1.iml" filepath="$PROJECT_DIR$/Task_1_3_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_3_1.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_3_1.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_3_1.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_3_1.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_1_4_1.iml" filepath="$PROJECT_DIR$/Task_1_4_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_4_1.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_4_1.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_4_1.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_4_1.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_1_5_1.iml" filepath="$PROJECT_DIR$/Task_1_5_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_5_1.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_5_1.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Task_1_5_1.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Task_1_5_1.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tasl_1_5_1.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Tasl_1_5_1.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tasl_1_5_1.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Tasl_1_5_1.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ru.nsu.oop.Task_1_1_2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ru.nsu.oop.Task_1_1_2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ru.nsu.oop.Task_1_1_2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ru.nsu.oop.Task_1_1_2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ru.nsu.oop.Task_1_2_2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ru.nsu.oop.Task_1_2_2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ru.nsu.oop.Task_1_2_2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ru.nsu.oop.Task_1_2_2.test.iml" />
+    </modules>
+  </component>
+</project>

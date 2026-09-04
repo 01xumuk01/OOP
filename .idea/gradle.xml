@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Task_1_1_1" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Task_1_1_1" />
+          </set>
+        </option>
+        <option name="myGradleHome" value="" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Task_1_1_1/Task_1_1_2" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Task_1_1_1/Task_1_1_2" />
+          </set>
+        </option>
+        <option name="myGradleHome" value="" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Task_1_1_2" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Task_1_1_2" />
+          </set>
+        </option>
+        <option name="myGradleHome" value="" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Task_1_1_3" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Task_1_1_3" />
+          </set>
+        </option>
+        <option name="myGradleHome" value="" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Task_1_2_1" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Task_1_2_1" />
+          </set>
+        </option>
+        <option name="myGradleHome" value="" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Task_1_2_1/Task_1_2_2" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Task_1_2_1/Task_1_2_2" />
+          </set>
+        </option>
+        <option name="myGradleHome" value="" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Task_1_2_2" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Task_1_2_2" />
+          </set>
+        </option>
+        <option name="myGradleHome" value="" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Task_1_3_1" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Task_1_3_1" />
+          </set>
+        </option>
+        <option name="myGradleHome" value="" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Task_1_4_1" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Task_1_4_1" />
+          </set>
+        </option>
+        <option name="myGradleHome" value="" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Task_1_5_1" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Task_1_5_1" />
+          </set>
+        </option>
+        <option name="myGradleHome" value="" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Tasl_1_5_1" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Tasl_1_5_1" />
+          </set>
+        </option>
+        <option name="myGradleHome" value="" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

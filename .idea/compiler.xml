@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="ru.nsu.oop.Task_1_1_2.main" target="21" />
+      <module name="ru.nsu.oop.Task_1_1_2.test" target="21" />
+      <module name="ru.nsu.oop.Task_1_2_2.main" target="21" />
+      <module name="ru.nsu.oop.Task_1_2_2.test" target="21" />
+      <module name="Task_1_1_1" target="21" />
+      <module name="Task_1_1_1.main" target="21" />
+      <module name="Task_1_1_1.test" target="21" />
+      <module name="Task_1_1_2" target="21" />
+      <module name="Task_1_1_2.main" target="21" />
+      <module name="Task_1_1_2.test" target="21" />
+      <module name="Task_1_1_3" target="21" />
+      <module name="Task_1_1_3.main" target="21" />
+      <module name="Task_1_1_3.test" target="21" />
+      <module name="Task_1_2_1" target="21" />
+      <module name="Task_1_2_1.main" target="21" />
+      <module name="Task_1_2_1.test" target="21" />
+      <module name="Task_1_2_2" target="21" />
+      <module name="Task_1_2_2.main" target="21" />
+      <module name="Task_1_2_2.test" target="21" />
+      <module name="Task_1_3_1" target="21" />
+      <module name="Task_1_3_1.main" target="21" />
+      <module name="Task_1_3_1.test" target="21" />
+      <module name="Task_1_4_1" target="21" />
+      <module name="Task_1_4_1.main" target="21" />
+      <module name="Task_1_4_1.test" target="21" />
+      <module name="Task_1_5_1" target="21" />
+      <module name="Task_1_5_1.main" target="21" />
+      <module name="Task_1_5_1.test" target="21" />
+      <module name="Tasl_1_5_1" target="21" />
+      <module name="Tasl_1_5_1.main" target="21" />
+      <module name="Tasl_1_5_1.test" target="21" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
