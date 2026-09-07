@@ -6,7 +6,6 @@
     <content url="file://$MODULE_DIR$/../../Task_1_1_1/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../Task_1_1_1/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../Task_1_1_1/src/main/resources" type="java-resource" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Task_1_1_1/src/test/java/ru/nsu/oop/MainTest.java" />
     </content>
     <orderEntry type="jdk" jdkName="21" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
