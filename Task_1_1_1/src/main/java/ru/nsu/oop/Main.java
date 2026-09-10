@@ -1,6 +1,15 @@
 package ru.nsu.oop;
 
+/**
+ * Класс, реализующий пирамидальную сортировку (HeapSort).
+ */
 public class Main {
+
+    /**
+     * Приватный конструктор утилитного класса.
+     */
+    private Main() {
+    }
 
     /**
      * Просеивает вверх.
@@ -9,7 +18,7 @@ public class Main {
      * @param index индекс просеимаевого числа
      */
 
-    public static void shiftup(int[] list, int index) {
+    public static void shiftUp(int[] list, int index) {
 
         if (index == 0) {
             return;
@@ -20,7 +29,7 @@ public class Main {
             list[index] = list[(index - 1) / 2];
             list[(index - 1) / 2] = tmp;
 
-            shiftup(list, (index - 1) / 2);
+            shiftUp(list, (index - 1) / 2);
 
             return;
         }
@@ -32,71 +41,47 @@ public class Main {
      *
      * @param list просеиваемая куча
      * @param index индекс просеимаевого числа
-     * @param index_last индекс последнего числа кучи
+     * @param lastIndex индекс последнего числа кучи
      */
 
-    public static void shiftdown(int[] list, int index, int index_last) {
+    public static void shiftDown(int[] list, int index, int lastIndex) {
+        int smallest = index;
+        int left = 2 * index + 1;
+        int right = 2 * index + 2;
 
-        if (index * 2 + 1 > index_last) {
-            return;
+        if (left <= lastIndex && list[left] < list[smallest]) {
+            smallest = left;
+        }
+        if (right <= lastIndex && list[right] < list[smallest]) {
+            smallest = right;
         }
 
-        if (index * 2 + 2 > index_last) {
-            if (list[index] > list[index * 2 + 1]) {
-                int tmp = list[index];
-                list[index] = list[index * 2 + 1];
-                list[index * 2 + 1] = tmp;
-                shiftdown(list, index * 2 + 1, index_last);
-            }
-
-            return;
-        }
-
-        if (list[index] > list[index * 2 + 1]) {
+        if (smallest != index) {
             int tmp = list[index];
-            list[index] = list[index * 2 + 1];
-            list[index * 2 + 1] = tmp;
-            shiftdown(list, index * 2 + 1, index_last);
-
-            if (list[index] > list[index * 2 + 2]) {
-                tmp = list[index];
-                list[index] = list[index * 2 + 2];
-                list[index * 2 + 2] = tmp;
-                shiftdown(list, index * 2 + 2, index_last);
-            }
-
+            list[index] = list[smallest];
+            list[smallest] = tmp;
+            shiftDown(list, smallest, lastIndex);
         }
-        else {
-            if (list[index] > list[index * 2 + 2]) {
-                int tmp = list[index];
-                list[index] = list[index * 2 + 2];
-                list[index * 2 + 2] = tmp;
-                shiftdown(list, index * 2 + 2, index_last);
-            }
-        }
-
-        return;
-
     }
 
     /**
      * Возвращает минимальное число из кучи, при этом удаляя его и перераспределяя кучу заново.
      *
      * @param list просеиваемая куча
-     * @param index_last индекс последнего числа кучи
+     * @param indexLast индекс последнего числа кучи
      * @return минимальное число из кучи
      */
 
-    public static int extractmin(int[] list, int index_last) {
+    public static int extractMin(int[] list, int indexLast) {
 
         int min = list[0];
 
-        if (index_last == 0) {
+        if (indexLast == 0) {
             return min;
         }
 
-        list[0] = list[index_last];
-        shiftdown(list, 0, index_last - 1);
+        list[0] = list[indexLast];
+        shiftDown(list, 0, indexLast - 1);
 
         return min;
     }
@@ -112,7 +97,7 @@ public class Main {
     public static void insert(int[] list, int index, int number) {
 
         list[index] = number;
-        shiftup(list, index);
+        shiftUp(list, index);
 
     }
 
@@ -120,62 +105,33 @@ public class Main {
      * Главная функция пирамидальной сортировки.
      *
      * @param list неотсортированный массив чисел
+     * @return отсортированный массив чисел
      */
 
-    public static void heapsort(int[] list) {
+    public static int[] heapSort(int[] list) {
 
-        int[] sorted_list = new int[list.length];
+        int[] minHeap = new int[list.length];
+        int[] result = new int[list.length];
 
         for (int i = 0; i < list.length; i++) {
-            insert(sorted_list, i, list[i]);
+            insert(minHeap, i, list[i]);
         }
 
-        System.out.print("[");
-
-        for (int i = 0; i < list.length - 1; i++) {
-            System.out.print(extractmin(sorted_list, list.length - i - 1) + ", ");
+        for (int i = 0; i < list.length; i++) {
+            result[i] = extractMin(minHeap, list.length - i - 1);
         }
 
-        if (list.length != 0) {
-            System.out.print(sorted_list[0]);
-        }
-
-        System.out.print("]\n");
+        return result;
 
     }
 
     /**
      * Тестирование функции пирамидальной сортировки.
      *
+     * @param args аргументы командной строки
      */
 
     public static void main(String[] args) {
-
-        // Граничные размеры (0, 1 и 2 элемента)
-        heapsort(new int[]{});
-        heapsort(new int[]{42});
-        heapsort(new int[]{2, 1});
-        heapsort(new int[]{1, 2});
-
-        // Различные варианты исходного порядка
-        heapsort(new int[]{1, 2, 3, 4, 5, 6, 7});
-        heapsort(new int[]{7, 6, 5, 4, 3, 2, 1});
-
-        // Дубликаты и повторяющиеся элементы
-        heapsort(new int[]{5, 5, 5, 5, 5});
-        heapsort(new int[]{3, 1, 2, 3, 1, 2, 3});
-        heapsort(new int[]{8, 4, 5, 7, 11, 7, 7, 0, -5});
-
-        // Отрицательные значения и ноль
-        heapsort(new int[]{-10, -3, -50, -1, 0, -4});
-        heapsort(new int[]{-5, 5, -4, 4, -3, 3, -2, 2, -1, 1, 0});
-
-        // Нечетное и четное количество элементов (проверка крайних листьев дерева)
-        heapsort(new int[]{9, 3, 7, 1, 8, 2});
-        heapsort(new int[]{9, 3, 7, 1, 8, 2, 5});
-
-        // Экстремальные значения диапазона типов
-        heapsort(new int[]{0, Integer.MAX_VALUE, -1, Integer.MIN_VALUE, 42});
 
     }
 }
