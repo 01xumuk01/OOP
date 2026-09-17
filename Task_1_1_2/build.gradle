@@ -18,3 +18,10 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+tasks.withType(JavaExec).configureEach {
+    jvmArgs '-Dfile.encoding=UTF-8'
+    jvmArgs '-Dsun.stdout.encoding=UTF-8'
+    jvmArgs '-Dsun.stderr.encoding=UTF-8'
+    standardInput = System.in
+}
