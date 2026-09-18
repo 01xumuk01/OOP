@@ -34,7 +34,7 @@ public class Game {
             view.printMessage("\n\n\nРаунд " + roundNumber + "\n");
             roundNumber += 1;
 
-            Round round = new Round(input, view);
+            Round round = createRound();
             RoundResult result = round.play();
 
             if (result == RoundResult.DEALER_WIN) {
@@ -50,5 +50,14 @@ public class Game {
                 return;
             }
         }
+    }
+
+    /**
+     * Создаёт следующий раунд с общими вводом и выводом.
+     *
+     * @return новый раунд
+     */
+    Round createRound() {
+        return new Round(input, view);
     }
 }

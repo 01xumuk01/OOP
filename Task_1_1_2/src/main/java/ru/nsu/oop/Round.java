@@ -13,10 +13,24 @@ public class Round {
     private static final int DEALER_STAND_POINTS = 17;
 
     /**
-     * Конструктор раунда, который инициализирует колоду, руку дилера и руку игрока.
+     * Создаёт раунд со случайно перемешанной колодой.
+     *
+     * @param input ввод команд
+     * @param view вывод игры
      */
     public Round(ConsoleInput input, ConsoleView view) {
-        deck = new Deck();
+        this(input, view, new Deck());
+    }
+
+    /**
+     * Создаёт раунд с переданной колодой.
+     *
+     * @param input ввод команд
+     * @param view вывод игры
+     * @param deck колода для раздачи
+     */
+    public Round(ConsoleInput input, ConsoleView view, Deck deck) {
+        this.deck = deck;
         playerHand = new Hand();
         dealerHand = new Hand();
         this.input = input;
