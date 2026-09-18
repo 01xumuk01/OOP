@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'jacoco'
 }
 
 group = 'ru.nsu.oop'
@@ -24,4 +25,13 @@ tasks.withType(JavaExec).configureEach {
     jvmArgs '-Dsun.stdout.encoding=UTF-8'
     jvmArgs '-Dsun.stderr.encoding=UTF-8'
     standardInput = System.in
+}
+
+jacocoTestReport {
+    dependsOn test
+
+    reports {
+        xml.required = true
+        html.required = true
+    }
 }
