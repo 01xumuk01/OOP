@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Класс, отвечающий за карты на руках, сумму очков, проверку перебора и блэкджека
+ * Класс, отвечающий за карты на руках, сумму очков, проверку перебора и блэкджека.
  */
 public class Hand {
     private static final int MAX_POINTS = 21;
@@ -21,6 +21,11 @@ public class Hand {
         cards.add(card);
     }
 
+    /**
+     * Метод, который считает очки на руке.
+     *
+     * @return Количество очков на руке.
+     */
     public int getPoints() {
         int points = 0;
         int aceCount = 0;

@@ -1,7 +1,7 @@
 package ru.nsu.oop;
 
 /**
- * Масть игральной карты.
+ * Перечисление возможных мастей карты.
  */
 public enum Suit {
     SPADES,

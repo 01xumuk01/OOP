@@ -10,6 +10,9 @@ import java.util.List;
 public class Deck {
     private final List<Card> cards;
 
+    /**
+     * Конструктор, который создает колоду и перемешивает в ней карты.
+     */
     public Deck() {
         cards = new ArrayList<>();
 
@@ -23,6 +26,11 @@ public class Deck {
         Collections.shuffle(cards);
     }
 
+    /**
+     * Метод, который достает из колоды одну карту, удаляя её.
+     *
+     * @return Одна карта из колоды.
+     */
     public Card dealCard() {
 
         Card card = cards.remove(cards.size() - 1);

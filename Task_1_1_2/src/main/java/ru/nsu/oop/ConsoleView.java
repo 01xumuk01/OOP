@@ -13,6 +13,9 @@ public class ConsoleView {
         System.out.println(message);
     }
 
+    /**
+     * Метод, который показывает руку дилера, скрывая вторую карту.
+     */
     public void printDealerInitialHand(Hand hand) {
         Card openCard = hand.getCards().get(0);
 
@@ -21,6 +24,9 @@ public class ConsoleView {
         );
     }
 
+    /**
+     * Метод, который печатает счёт игры.
+     */
     public void printScore(int dealerScore, int playerScore) {
         if (dealerScore > playerScore) {
             printMessage("Счёт " + dealerScore + " : " + playerScore + " в пользу дилера.");

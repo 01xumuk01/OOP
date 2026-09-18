@@ -12,6 +12,9 @@ public class Game {
 
     private int roundNumber;
 
+    /**
+     * Конструктор, который инициализирует объект ввода и вывода, счет дилара и игрока, номер раунда и приветствует игрока.
+     */
     public Game() {
         input = new ConsoleInput();
         view = new ConsoleView();
@@ -23,6 +26,9 @@ public class Game {
         view.printMessage("Добро пожаловать в Блэкджек!");
     }
 
+    /**
+     * Метод, который запускает игру BlackJack.
+     */
     public void play() {
         while (true) {
             view.printMessage("\n\n\nРаунд " + roundNumber + "\n");

@@ -12,6 +12,9 @@ public class Round {
 
     private static final int DEALER_STAND_POINTS = 17;
 
+    /**
+     * Конструктор раунда, который инициализирует колоду, руку дилера и руку игрока.
+     */
     public Round(ConsoleInput input, ConsoleView view) {
         deck = new Deck();
         playerHand = new Hand();
@@ -30,6 +33,11 @@ public class Round {
         }
     }
 
+    /**
+     * Метод, который запускает один раунд.
+     *
+     * @return кто выиграл.
+     */
     public RoundResult play() {
         dealInitialCard();
         view.printDealerInitialHand(dealerHand);
