@@ -1,11 +1,11 @@
 package ru.nsu.oop;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 import java.util.Set;
+import org.junit.jupiter.api.Test;
 
 class CardTest {
 

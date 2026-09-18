@@ -30,11 +30,9 @@ public class ConsoleView {
     public void printScore(int dealerScore, int playerScore) {
         if (dealerScore > playerScore) {
             printMessage("Счёт " + dealerScore + " : " + playerScore + " в пользу дилера.");
-        }
-        else if (dealerScore < playerScore) {
+        } else if (dealerScore < playerScore) {
             printMessage("Счёт " + dealerScore + " : " + playerScore + " в Вашу пользу.");
-        }
-        else {
+        } else {
             printMessage("Счёт " + dealerScore + " : " + playerScore + ".");
         }
     }

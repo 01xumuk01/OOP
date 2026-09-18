@@ -81,11 +81,9 @@ public class Round {
             if (command.equals("1")) {
                 playerHand.addCard(deck.dealCard());
                 view.printHand("Ваши карты", playerHand);
-            }
-            else if (command.equals("0")) {
+            } else if (command.equals("0")) {
                 return;
-            }
-            else {
+            } else {
                 view.printMessage("Неизвестная команда");
             }
         }
@@ -105,8 +103,7 @@ public class Round {
 
         if (dealerHand.isBust()) {
             view.printMessage("У дилера перебор!");
-        }
-        else {
+        } else {
             view.printMessage("Дилер остановился");
         }
     }
@@ -118,28 +115,22 @@ public class Round {
         if (playerHand.isBust()) {
             view.printMessage("Вы проиграли!");
             return RoundResult.DEALER_WIN;
-        }
-        else if (dealerHand.isBust()) {
+        } else if (dealerHand.isBust()) {
             view.printMessage("Вы выиграли!");
             return RoundResult.PLAYER_WIN;
-        }
-        else if (playerHand.isBlackjack() && !dealerHand.isBlackjack()) {
+        } else if (playerHand.isBlackjack() && !dealerHand.isBlackjack()) {
             view.printMessage("Блэкджек! Вы выиграли! >:(");
             return RoundResult.PLAYER_WIN;
-        }
-        else if (!playerHand.isBlackjack() && dealerHand.isBlackjack()) {
+        } else if (!playerHand.isBlackjack() && dealerHand.isBlackjack()) {
             view.printMessage("Блэкджек у дилера. Вы проиграли!! XD XD");
             return RoundResult.DEALER_WIN;
-        }
-        else if (playerHand.getPoints() > dealerHand.getPoints()) {
+        } else if (playerHand.getPoints() > dealerHand.getPoints()) {
             view.printMessage("Вы выиграли!");
             return RoundResult.PLAYER_WIN;
-        }
-        else if (playerHand.getPoints() < dealerHand.getPoints()) {
+        } else if (playerHand.getPoints() < dealerHand.getPoints()) {
             view.printMessage("Вы проиграли!");
             return RoundResult.DEALER_WIN;
-        }
-        else {
+        } else {
             view.printMessage("Ничья");
             return RoundResult.DRAW;
         }
