@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.oop"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.oop"},{"l":"ru.nsu.oop.console"},{"l":"ru.nsu.oop.game"},{"l":"ru.nsu.oop.model"}];updateSearchResults();
