@@ -1,9 +1,9 @@
-package ru.nsu.oop;
+package ru.nsu.oop.console;
 
 import java.util.Scanner;
 
 /**
- * Класс, отвечающий за чтение и проверку команд пользователя.
+ * Читает строку команды и удаляет пробелы по её краям.
  */
 public class ConsoleInput {
     private final Scanner scanner;

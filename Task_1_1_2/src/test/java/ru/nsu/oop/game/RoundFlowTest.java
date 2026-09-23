@@ -1,4 +1,4 @@
-package ru.nsu.oop;
+package ru.nsu.oop.game;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -9,17 +9,28 @@ import java.util.List;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
+import ru.nsu.oop.model.Rank;
+import ru.nsu.oop.support.BlackjackTestSupport;
 
 /**
- * Проверяет настоящую логику раунда на заранее заданных раздачах.
+ * Проверяет взаимодействие Game и Round на заранее заданных раздачах.
  */
 class RoundFlowTest extends BlackjackTestSupport {
     private FixedDeck deck;
+    private Round round;
 
     private RoundResult play(String commands, Rank... ranks) {
-        setInput(commands);
+        setInput(commands + "0\n");
         deck = new FixedDeck(ranks);
-        return new Round(new ConsoleInput(), new ConsoleView(), deck).play();
+        round = new Round(deck);
+        Game game = new Game() {
+            @Override
+            protected Round createRound() {
+                return round;
+            }
+        };
+        game.play();
+        return round.getResult();
     }
 
     @TestFactory
@@ -195,7 +206,7 @@ class RoundFlowTest extends BlackjackTestSupport {
         assertEquals(RoundResult.PLAYER_WIN,
                 play("1\n0\n", Rank.SEVEN, Rank.TEN, Rank.SIX, Rank.KING, Rank.EIGHT));
         assertTrue(output().contains("=> 21"));
-        assertFalse(output().contains("Блэкджек!"));
+        assertFalse(round.getPlayer().isBlackjack());
     }
 
     @Test
@@ -220,14 +231,14 @@ class RoundFlowTest extends BlackjackTestSupport {
         int dealerTurn = text.indexOf("Ход дилера");
         assertTrue(dealerTurn > 0);
         assertTrue(text.substring(0, dealerTurn).contains("<закрытая карта>"));
-        assertFalse(text.substring(0, dealerTurn).contains("SEVEN"));
-        assertTrue(text.substring(dealerTurn).contains("SEVEN"));
+        assertFalse(text.substring(0, dealerTurn).contains("Семёрка"));
+        assertTrue(text.substring(dealerTurn).contains("Семёрка"));
     }
 
     @Test
     void blackjackRevealsDealerCards() {
         play("", Rank.ACE, Rank.NINE, Rank.KING, Rank.SEVEN);
-        assertTrue(output().contains("SEVEN"));
+        assertTrue(output().contains("Семёрка"));
         assertTrue(output().contains("=> 16"));
     }
 

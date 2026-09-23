@@ -1,4 +1,4 @@
-package ru.nsu.oop;
+package ru.nsu.oop.support;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -9,20 +9,27 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.parallel.ResourceLock;
 import org.junit.jupiter.api.parallel.Resources;
+import ru.nsu.oop.model.Card;
+import ru.nsu.oop.model.Dealer;
+import ru.nsu.oop.model.Deck;
+import ru.nsu.oop.model.Hand;
+import ru.nsu.oop.model.Player;
+import ru.nsu.oop.model.Rank;
+import ru.nsu.oop.model.Suit;
 
 /**
  * Перехватывает консоль и восстанавливает её после каждого теста.
  */
 @ResourceLock("java.lang.System.in")
 @ResourceLock(Resources.SYSTEM_OUT)
-abstract class BlackjackTestSupport {
+public abstract class BlackjackTestSupport {
     private InputStream originalInput;
     private PrintStream originalOutput;
     private PrintStream capturedOutput;
     private ByteArrayOutputStream buffer;
 
     @BeforeEach
-    void captureConsole() {
+    protected void captureConsole() {
         originalInput = System.in;
         originalOutput = System.out;
         buffer = new ByteArrayOutputStream();
@@ -32,26 +39,26 @@ abstract class BlackjackTestSupport {
     }
 
     @AfterEach
-    void restoreConsole() {
+    protected void restoreConsole() {
         System.setIn(originalInput);
         System.setOut(originalOutput);
         capturedOutput.close();
     }
 
-    void setInput(String text) {
+    protected void setInput(String text) {
         System.setIn(new ByteArrayInputStream(text.getBytes(Charset.defaultCharset())));
     }
 
-    String output() {
+    protected String output() {
         capturedOutput.flush();
         return buffer.toString(Charset.defaultCharset());
     }
 
-    void clearOutput() {
+    protected void clearOutput() {
         buffer.reset();
     }
 
-    Hand hand(Rank... ranks) {
+    protected Hand hand(Rank... ranks) {
         Hand hand = new Hand();
         for (Rank rank : ranks) {
             hand.addCard(new Card(Suit.SPADES, rank));
@@ -59,15 +66,31 @@ abstract class BlackjackTestSupport {
         return hand;
     }
 
+    protected Player player(Rank... ranks) {
+        Player player = new Player();
+        for (Rank rank : ranks) {
+            player.receiveCard(new Card(Suit.SPADES, rank));
+        }
+        return player;
+    }
+
+    protected Dealer dealer(Rank... ranks) {
+        Dealer dealer = new Dealer();
+        for (Rank rank : ranks) {
+            dealer.receiveCard(new Card(Suit.SPADES, rank));
+        }
+        return dealer;
+    }
+
     /**
      * Колода с известным порядком выдачи и счётчиком выданных карт.
      */
-    static class FixedDeck extends Deck {
+    public static class FixedDeck extends Deck {
         private final Rank[] ranks;
         private final int[] rankCounts = new int[Rank.values().length];
         private int dealt;
 
-        FixedDeck(Rank... ranks) {
+        public FixedDeck(Rank... ranks) {
             this.ranks = ranks.clone();
         }
 
@@ -84,7 +107,7 @@ abstract class BlackjackTestSupport {
             return new Card(Suit.values()[suitIndex], rank);
         }
 
-        int dealtCount() {
+        public int dealtCount() {
             return dealt;
         }
     }

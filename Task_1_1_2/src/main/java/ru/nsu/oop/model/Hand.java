@@ -1,4 +1,4 @@
-package ru.nsu.oop;
+package ru.nsu.oop.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
-package ru.nsu.oop;
+package ru.nsu.oop.model;
 
 /**
- * Класс, отвечающий за данные карту: масть и достоинство.
+ * Неизменяемая карта с заданными мастью и достоинством.
  */
 public class Card {
 
@@ -23,6 +23,8 @@ public class Card {
 
     @Override
     public String toString() {
-        return rank + " " + suit + " (" + rank.getPoints() + ")";
+        return rank.getRussianName() + " " + suit.getRussianName()
+                + " (" + rank.getPoints() + ")";
     }
 }
+

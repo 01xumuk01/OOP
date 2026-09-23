@@ -1,5 +1,7 @@
 package ru.nsu.oop;
 
+import ru.nsu.oop.game.Game;
+
 /**
  * Класс, отвечающий за создание объектов и за старт игры.
  */

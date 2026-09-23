@@ -1,4 +1,4 @@
-package ru.nsu.oop;
+package ru.nsu.oop.game;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -9,9 +9,11 @@ import java.util.List;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
+import ru.nsu.oop.model.Rank;
+import ru.nsu.oop.support.BlackjackTestSupport;
 
 /**
- * Проверяет счёт и цикл игры независимо от правил отдельного раунда.
+ * Проверяет счёт и цикл игры на раздачах с заранее известным исходом.
  */
 class GameFlowTest extends BlackjackTestSupport {
     @TestFactory
@@ -111,8 +113,8 @@ class GameFlowTest extends BlackjackTestSupport {
         ScenarioGame game = new ScenarioGame(results);
         game.play();
         assertEquals(1000, game.created);
-        assertTrue(output().contains("Раунд 1000\n"));
-        assertFalse(output().contains("Раунд 1001\n"));
+        assertTrue(output().contains("Раунд 1000" + System.lineSeparator()));
+        assertFalse(output().contains("Раунд 1001" + System.lineSeparator()));
         assertTrue(scores(output()).endsWith("333:334;"));
     }
 
@@ -137,17 +139,17 @@ class GameFlowTest extends BlackjackTestSupport {
         }
 
         @Override
-        Round createRound() {
+        protected Round createRound() {
             if (created >= results.length) {
                 throw new AssertionError("Игра запустила лишний раунд");
             }
             RoundResult result = results[created++];
-            return new Round(new ConsoleInput(), new ConsoleView()) {
-                @Override
-                public RoundResult play() {
-                    return result;
-                }
+            FixedDeck deck = switch (result) {
+                case PLAYER_WIN -> new FixedDeck(Rank.ACE, Rank.NINE, Rank.KING, Rank.SEVEN);
+                case DEALER_WIN -> new FixedDeck(Rank.TEN, Rank.ACE, Rank.NINE, Rank.KING);
+                case DRAW -> new FixedDeck(Rank.ACE, Rank.KING, Rank.QUEEN, Rank.ACE);
             };
+            return new Round(deck);
         }
     }
 }

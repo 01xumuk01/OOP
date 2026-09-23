@@ -1,4 +1,4 @@
-package ru.nsu.oop;
+package ru.nsu.oop.console;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -7,6 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
+import ru.nsu.oop.game.RoundResult;
+import ru.nsu.oop.model.Dealer;
+import ru.nsu.oop.model.Player;
+import ru.nsu.oop.model.Rank;
+import ru.nsu.oop.support.BlackjackTestSupport;
 
 /**
  * Проверяет настоящий ввод и точный текст консольного вывода.
@@ -86,53 +91,53 @@ class ConsoleIoTest extends BlackjackTestSupport {
     }
 
     @Test
-    void messageEndsWithNewline() {
-        new ConsoleView().printMessage("Привет");
-        assertEquals("Привет" + System.lineSeparator(), output());
+    void welcomeEndsWithNewline() {
+        new ConsoleView().printWelcome();
+        assertEquals("Добро пожаловать в Блэкджек!" + System.lineSeparator(), output());
     }
 
     @Test
-    void emptyMessagePrintsNewline() {
-        new ConsoleView().printMessage("");
-        assertEquals(System.lineSeparator(), output());
+    void printsRoundNumber() {
+        new ConsoleView().printRoundNumber(42);
+        assertEquals("\nРаунд 42" + System.lineSeparator(), output());
     }
 
     @Test
     void printsEmptyHand() {
-        new ConsoleView().printHand("Игрок", new Hand());
-        assertEquals("Игрок: [] => 0" + System.lineSeparator(), output());
+        new ConsoleView().printPlayerHand(new Player());
+        assertEquals("Ваши карты: [] => 0" + System.lineSeparator(), output());
     }
 
     @Test
     void printsCardsInOrderAndAdjustedAceTotal() {
-        new ConsoleView().printHand("Игрок", hand(Rank.ACE, Rank.SIX, Rank.EIGHT));
-        assertEquals("Игрок: [ACE SPADES (11), SIX SPADES (6), EIGHT SPADES (8)]"
+        new ConsoleView().printPlayerHand(player(Rank.ACE, Rank.SIX, Rank.EIGHT));
+        assertEquals("Ваши карты: [Туз пик (11), Шестёрка пик (6), Восьмёрка пик (8)]"
                 + " => 15" + System.lineSeparator(), output());
     }
 
     @Test
-    void handOutputDoesNotDependOnOwnerText() {
-        new ConsoleView().printHand("Произвольное имя", hand(Rank.TEN, Rank.NINE));
-        assertTrue(output().startsWith("Произвольное имя:"));
-        assertTrue(output().contains("=> 19"));
+    void revealedDealerHandIncludesAllCardsAndTotal() {
+        new ConsoleView().printDealerHand(dealer(Rank.KING, Rank.NINE));
+        assertEquals("Карты дилера: [Король пик (10), Девятка пик (9)] => 19"
+                + System.lineSeparator(), output());
     }
 
     @Test
     void hidesSecondDealerCardAndTotal() {
-        new ConsoleView().printDealerInitialHand(hand(Rank.KING, Rank.FIVE));
-        assertEquals("Карты дилера: [KING SPADES (10), <закрытая карта>]"
+        new ConsoleView().printDealerInitialHand(dealer(Rank.KING, Rank.FIVE));
+        assertEquals("Карты дилера: [Король пик (10), <закрытая карта>]"
                 + System.lineSeparator(), output());
-        assertFalse(output().contains("FIVE"));
+        assertFalse(output().contains("Пятёрка"));
         assertFalse(output().contains("=>"));
     }
 
     @Test
     void printingDoesNotModifyHand() {
-        Hand hand = hand(Rank.ACE, Rank.KING);
-        new ConsoleView().printHand("Игрок", hand);
-        new ConsoleView().printDealerInitialHand(hand);
-        assertEquals(2, hand.getCards().size());
-        assertTrue(hand.isBlackjack());
+        Dealer dealer = dealer(Rank.ACE, Rank.KING);
+        new ConsoleView().printDealerHand(dealer);
+        new ConsoleView().printDealerInitialHand(dealer);
+        assertEquals(2, dealer.getCards().size());
+        assertTrue(dealer.isBlackjack());
     }
 
     @Test
@@ -157,5 +162,15 @@ class ConsoleIoTest extends BlackjackTestSupport {
     void printsZeroScore() {
         new ConsoleView().printScore(0, 0);
         assertEquals("Счёт 0 : 0." + System.lineSeparator(), output());
+    }
+
+    @Test
+    void printsEveryRoundResult() {
+        ConsoleView view = new ConsoleView();
+        view.printResult(RoundResult.PLAYER_WIN);
+        view.printResult(RoundResult.DEALER_WIN);
+        view.printResult(RoundResult.DRAW);
+        assertEquals(String.join(System.lineSeparator(),
+                "Вы выиграли!", "Вы проиграли!", "Ничья", ""), output());
     }
 }

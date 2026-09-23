@@ -1,4 +1,4 @@
-package ru.nsu.oop;
+package ru.nsu.oop.model;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,21 +36,21 @@ class CardTest {
     void queenToString() {
         Card card = new Card(Suit.SPADES, Rank.QUEEN);
 
-        assertEquals("QUEEN SPADES (10)", card.toString());
+        assertEquals("Дама пик (10)", card.toString());
     }
 
     @Test
     void aceToString() {
         Card card = new Card(Suit.HEARTS, Rank.ACE);
 
-        assertEquals("ACE HEARTS (11)", card.toString());
+        assertEquals("Туз червей (11)", card.toString());
     }
 
     @Test
     void numericCardToString() {
         Card card = new Card(Suit.DIAMONDS, Rank.FIVE);
 
-        assertEquals("FIVE DIAMONDS (5)", card.toString());
+        assertEquals("Пятёрка бубен (5)", card.toString());
     }
 
     @Test
