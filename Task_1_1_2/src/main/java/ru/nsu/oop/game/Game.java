@@ -31,6 +31,7 @@ public class Game {
         while (true) {
             view.printRoundNumber(roundNumber++);
             Round round = createRound();
+            round.result = null;
             conductRound(round);
             updateScore(round.getResult());
             view.printScore(dealerScore, playerScore);

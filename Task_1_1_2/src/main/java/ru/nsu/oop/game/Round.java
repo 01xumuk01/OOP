@@ -15,7 +15,7 @@ public class Round {
     private final Player player = new Player();
     private final Dealer dealer = new Dealer();
     private RoundState state = RoundState.NEW;
-    private RoundResult result;
+    protected RoundResult result;
 
     /**
      * Создаёт ещё не начатую раздачу.
