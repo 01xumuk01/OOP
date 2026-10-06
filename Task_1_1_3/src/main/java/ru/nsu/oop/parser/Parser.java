@@ -29,7 +29,8 @@ public class Parser {
         Parser parser = new Parser(input);
         Expression expression = parser.parseExpression();
         if (parser.hasNext()) {
-            throw parser.error("Остались лишние символы!");
+
+            throw new IllegalArgumentException("Остались лишние символы!");
         }
         return expression;
     }
@@ -42,7 +43,8 @@ public class Parser {
                 if (Character.isLetter(peek())) {
                     yield parseVariable();
                 }
-                throw error("Ожидалось число, переменная или выражение в скобках!");
+
+                throw new IllegalArgumentException("Ожидалось число, переменная или выражение в скобках!");
             }
         };
     }
@@ -52,7 +54,7 @@ public class Parser {
         if (peek() == '-') {
             read();
             if (!hasNext() || !isDigit(peek())) {
-                throw error("После минуса ожидалась цифра!");
+                throw new IllegalArgumentException("После минуса ожидалась цифра!");
             }
         }
         while (hasNext() && isDigit(peek())) {
@@ -85,7 +87,7 @@ public class Parser {
             case '-' -> new Sub(left, right);
             case '*' -> new Mul(left, right);
             case '/' -> new Div(left, right);
-            default -> throw error("Не распознана операция '" + operation + "'!");
+            default -> throw new IllegalArgumentException("Не распознана операция '" + operation + "'!");
         };
     }
 
@@ -95,7 +97,7 @@ public class Parser {
 
     private char peek() {
         if (!hasNext()) {
-            throw error("Неожиданный конец строки!");
+            throw new IllegalArgumentException("Неожиданный конец строки!");
         }
         return input.charAt(position);
     }
@@ -108,16 +110,12 @@ public class Parser {
 
     private void expect(char expected) {
         if (peek() != expected) {
-            throw error("Ожидался символ '" + expected + "'!");
+            throw new IllegalArgumentException("Ожидался символ '" + expected + "'!");
         }
         read();
     }
 
     private boolean isDigit(char symbol) {
         return symbol >= '0' && symbol <= '9';
-    }
-
-    private IllegalArgumentException error(String message) {
-        return new IllegalArgumentException("Позиция " + position + ". " + message);
     }
 }
