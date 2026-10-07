@@ -36,17 +36,22 @@ public class Parser {
     }
 
     private Expression parseExpression() {
-        return switch (peek()) {
-            case '(' -> parseBinaryExpression();
-            case '-', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' -> parseNumber();
-            default -> {
-                if (Character.isLetter(peek())) {
-                    yield parseVariable();
-                }
+        char symbol = peek();
 
-                throw new IllegalArgumentException("Ожидалось число, переменная или выражение в скобках!");
-            }
-        };
+        if (symbol == '-' || isDigit(symbol)) {
+            return parseNumber();
+        }
+
+        if (Character.isLetter(symbol)) {
+            return parseVariable();
+        }
+
+        if (symbol == '(') {
+            return parseBinaryExpression();
+        }
+
+        throw new IllegalArgumentException("Позиция " + position
+                + ". Ожидалось число, переменная или выражение в скобках!");
     }
 
     private Expression parseNumber() {
