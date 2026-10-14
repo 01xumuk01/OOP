@@ -15,7 +15,7 @@ public class Main {
      * Точка входа.
      */
     public static void main() {
-        System.out.println("=== ДЕМОНСТРАЦИЯ РАБОТЫ ХЕШ-ТАБЛИЦЫ ===");
+        System.out.println("==== ДЕМОНСТРАЦИЯ РАБОТЫ ХЕШ-ТАБЛИЦЫ ====");
 
         HashTable<String, Integer> scores = new HashTable<>();
         scores.put("Alice", 95);
