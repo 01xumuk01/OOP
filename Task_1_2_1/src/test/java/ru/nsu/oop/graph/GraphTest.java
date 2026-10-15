@@ -1,5 +1,11 @@
 package ru.nsu.oop.graph;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,12 +16,6 @@ import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import ru.nsu.oop.Main;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Модульные тесты для всех реализаций графа, вершин, чтения из файла и сортировки.
@@ -32,12 +32,13 @@ class GraphTest {
 
     @Test
     void testVertexAndMain() {
-        Main mainInstance = new Main();
+        final Main mainInstance = new Main();
+        assertNotEquals(null, mainInstance);
         Main.main(new String[]{});
 
-        Vertex<Integer> v1 = new Vertex<>("A", 10);
-        Vertex<Integer> v2 = new Vertex<>("A", 99);
-        Vertex<Integer> v3 = new Vertex<>("B", 10);
+        final Vertex<Integer> v1 = new Vertex<>("A", 10);
+        final Vertex<Integer> v2 = new Vertex<>("A", 99);
+        final Vertex<Integer> v3 = new Vertex<>("B", 10);
 
         assertEquals("A", v1.getName());
         assertEquals(10, v1.getValue());
@@ -49,16 +50,15 @@ class GraphTest {
         assertNotEquals(v1, v3);
         assertFalse(v1.equals(null));
         assertFalse(v1.equals("NotAVertex"));
-        assertNotEquals(null, mainInstance);
     }
 
     @ParameterizedTest
     @MethodSource("graphProvider")
     void testVerticesAndEdgesOperations(Graph<Integer> graph) {
-        Vertex<Integer> a = new Vertex<>("A", 1);
-        Vertex<Integer> b = new Vertex<>("B", 2);
-        Vertex<Integer> c = new Vertex<>("C", 3);
-        Vertex<Integer> missing = new Vertex<>("Z", 99);
+        final Vertex<Integer> a = new Vertex<>("A", 1);
+        final Vertex<Integer> b = new Vertex<>("B", 2);
+        final Vertex<Integer> c = new Vertex<>("C", 3);
+        final Vertex<Integer> missing = new Vertex<>("Z", 99);
 
         graph.addVertex(a);
         graph.addVertex(b);
@@ -66,10 +66,8 @@ class GraphTest {
         assertThrows(IllegalArgumentException.class, () -> graph.addVertex(a));
 
         graph.addEdge(a, b);
-        // Добавление новой вершины, когда в графе уже есть рёбра
         graph.addVertex(c);
 
-        // Повторное добавление ребра и петли
         graph.addEdge(a, b);
         graph.addEdge(b, b);
         graph.addEdge(b, b);
@@ -79,18 +77,15 @@ class GraphTest {
         assertEquals(List.of(b), graph.neighbors(a));
         assertTrue(graph.neighbors(b).containsAll(List.of(b, c)));
 
-        // Удаление существующего и несуществующего ребра
         graph.removeEdge(a, b);
         graph.removeEdge(a, c);
         assertTrue(graph.neighbors(a).isEmpty());
 
-        // Добавление обратного ребра и удаление вершины
         graph.addEdge(c, a);
         graph.removeVertex(b);
         assertEquals(List.of(a, c), graph.vertices());
         assertEquals(List.of(a), graph.neighbors(c));
 
-        // Исключения при обращении к отсутствующим вершинам
         assertThrows(IllegalArgumentException.class, () -> graph.removeVertex(missing));
         assertThrows(IllegalArgumentException.class, () -> graph.addEdge(missing, a));
         assertThrows(IllegalArgumentException.class, () -> graph.addEdge(a, missing));
@@ -101,12 +96,12 @@ class GraphTest {
 
     @Test
     void testEqualsHashCodeAndToStringAcrossImplementations() {
-        Graph<Integer> matrix = new AdjacencyMatrixGraph<>();
-        Graph<Integer> list = new AdjacencyListGraph<>();
-        Graph<Integer> incidence = new IncidenceMatrixGraph<>();
+        final Graph<Integer> matrix = new AdjacencyMatrixGraph<>();
+        final Graph<Integer> list = new AdjacencyListGraph<>();
+        final Graph<Integer> incidence = new IncidenceMatrixGraph<>();
 
-        Vertex<Integer> a = new Vertex<>("A", 1);
-        Vertex<Integer> b = new Vertex<>("B", 2);
+        final Vertex<Integer> a = new Vertex<>("A", 1);
+        final Vertex<Integer> b = new Vertex<>("B", 2);
 
         for (Graph<Integer> g : List.of(matrix, list, incidence)) {
             g.addVertex(a);
@@ -124,11 +119,9 @@ class GraphTest {
         assertFalse(matrix.equals(null));
         assertFalse(matrix.equals("NotAGraph"));
 
-        // Отличие по рёбрам при одинаковых вершинах
         incidence.removeEdge(a, b);
         assertNotEquals(matrix, incidence);
 
-        // Отличие по набору вершин
         incidence.removeVertex(b);
         assertNotEquals(matrix, incidence);
     }
@@ -136,9 +129,9 @@ class GraphTest {
     @ParameterizedTest
     @MethodSource("graphProvider")
     void testTopologicalSortingSuccessAndCycle(Graph<Integer> graph) {
-        Vertex<Integer> a = new Vertex<>("A", 1);
-        Vertex<Integer> b = new Vertex<>("B", 2);
-        Vertex<Integer> c = new Vertex<>("C", 3);
+        final Vertex<Integer> a = new Vertex<>("A", 1);
+        final Vertex<Integer> b = new Vertex<>("B", 2);
+        final Vertex<Integer> c = new Vertex<>("C", 3);
 
         graph.addVertex(c);
         graph.addVertex(a);
@@ -150,14 +143,14 @@ class GraphTest {
         List<Vertex<Integer>> sorted = graph.topologicalSorting();
         assertEquals(List.of(a, b, c), sorted);
 
-        // Замыкаем цикл C -> A
         graph.addEdge(c, a);
         assertThrows(IllegalStateException.class, graph::topologicalSorting);
     }
 
     @ParameterizedTest
     @MethodSource("graphProvider")
-    void testReadFileValidAndInvalid(Graph<Integer> graph, @TempDir Path tempDir) throws IOException {
+    void testReadFileValidAndInvalid(
+            Graph<Integer> graph, @TempDir Path tempDir) throws IOException {
         Path validFile = tempDir.resolve("graph.txt");
         Files.writeString(validFile, "3 2\nA 10\nB 20\nC 30\nA B\nB C\n");
 
@@ -165,14 +158,12 @@ class GraphTest {
         assertEquals(3, graph.vertices().size());
         assertEquals(List.of(new Vertex<>("B", 20)), graph.neighbors(new Vertex<>("A", 10)));
 
-        // Проверка неизвестной первой вершины в ребре (from == null)
         Path unknownFromFile = tempDir.resolve("bad_from.txt");
         Files.writeString(unknownFromFile, "1 1\nA 10\nZ A\n");
         Graph<Integer> g2 = new AdjacencyListGraph<>();
         assertThrows(IllegalArgumentException.class,
                 () -> g2.readFile(unknownFromFile, Integer::parseInt));
 
-        // Проверка неизвестной второй вершины в ребре (to == null)
         Path unknownToFile = tempDir.resolve("bad_to.txt");
         Files.writeString(unknownToFile, "1 1\nA 10\nA Z\n");
         Graph<Integer> g3 = new AdjacencyListGraph<>();
