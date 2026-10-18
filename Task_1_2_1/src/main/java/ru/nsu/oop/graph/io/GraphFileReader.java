@@ -1,4 +1,7 @@
-package ru.nsu.oop.graph;
+package ru.nsu.oop.graph.io;
+
+import ru.nsu.oop.graph.Graph;
+import ru.nsu.oop.graph.Vertex;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

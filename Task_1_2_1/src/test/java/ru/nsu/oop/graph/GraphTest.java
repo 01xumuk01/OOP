@@ -16,6 +16,9 @@ import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import ru.nsu.oop.Main;
+import ru.nsu.oop.graph.realization.AdjacencyListGraph;
+import ru.nsu.oop.graph.realization.AdjacencyMatrixGraph;
+import ru.nsu.oop.graph.realization.IncidenceMatrixGraph;
 
 /**
  * Модульные тесты для всех реализаций графа, вершин, чтения из файла и сортировки.

@@ -1,5 +1,7 @@
 package ru.nsu.oop.graph;
 
+import ru.nsu.oop.graph.io.GraphFileReader;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;

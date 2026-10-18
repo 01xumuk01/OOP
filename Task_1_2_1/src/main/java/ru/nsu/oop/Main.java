@@ -1,6 +1,6 @@
 package ru.nsu.oop;
 
-import ru.nsu.oop.graph.AdjacencyMatrixGraph;
+import ru.nsu.oop.graph.realization.AdjacencyMatrixGraph;
 import ru.nsu.oop.graph.Graph;
 import ru.nsu.oop.graph.Vertex;
 

@@ -1,4 +1,7 @@
-package ru.nsu.oop.graph;
+package ru.nsu.oop.graph.realization;
+
+import ru.nsu.oop.graph.AbstractGraph;
+import ru.nsu.oop.graph.Vertex;
 
 import java.util.ArrayList;
 import java.util.List;
