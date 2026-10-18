@@ -1,8 +1,5 @@
 package ru.nsu.oop.graph.io;
 
-import ru.nsu.oop.graph.Graph;
-import ru.nsu.oop.graph.Vertex;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
@@ -10,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Function;
+import ru.nsu.oop.graph.Graph;
+import ru.nsu.oop.graph.Vertex;
 
 /**
  * Загрузчик графа из текстового файла фиксированного формата.
