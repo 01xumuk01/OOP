@@ -5,21 +5,21 @@
 <title>Graph (Task_1_2_1 1.0-SNAPSHOT API)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="description" content="declaration: package: ru.nsu.oop.graph, interface: Graph">
+<meta name="description" content="declaration: package: ru.nsu.oop.graph.model, interface: Graph">
 <meta name="generator" content="javadoc/ClassWriterImpl">
-<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../../../../script-dir/jquery-ui.min.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../../../../jquery-ui.overrides.css" title="Style">
-<script type="text/javascript" src="../../../../script.js"></script>
-<script type="text/javascript" src="../../../../script-dir/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="../../../../script-dir/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../../script-dir/jquery-ui.min.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../../jquery-ui.overrides.css" title="Style">
+<script type="text/javascript" src="../../../../../script.js"></script>
+<script type="text/javascript" src="../../../../../script-dir/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
 var oddRowColor = "odd-row-color";
 var tableTab = "table-tab";
 var activeTableTab = "active-table-tab";
-var pathtoroot = "../../../../";
+var pathtoroot = "../../../../../";
 loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -31,12 +31,12 @@ loadScripts(document, 'script');</script>
 <div class="top-nav" id="navbar-top">
 <div class="skip-nav"><a href="#skip-navbar-top" title="Skip navigation links">Skip navigation links</a></div>
 <ul id="navbar-top-firstrow" class="nav-list" title="Navigation">
-<li><a href="../../../../index.html">Overview</a></li>
+<li><a href="../../../../../index.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="nav-bar-cell1-rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
-<li><a href="../../../../index-all.html">Index</a></li>
-<li><a href="../../../../help-doc.html#class">Help</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html#class">Help</a></li>
 </ul>
 </div>
 <div class="sub-nav">
@@ -67,7 +67,7 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.oop.graph</a></div>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.oop.graph.model</a></div>
 <h1 title="Interface Graph" class="title">Interface Graph&lt;T&gt;</h1>
 </div>
 <section class="class-description" id="class-description">
@@ -77,7 +77,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <dl class="notes">
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="AbstractGraph.html" title="class in ru.nsu.oop.graph">AbstractGraph</a></code>, <code><a href="realization/AdjacencyListGraph.html" title="class in ru.nsu.oop.graph.realization">AdjacencyListGraph</a></code>, <code><a href="realization/AdjacencyMatrixGraph.html" title="class in ru.nsu.oop.graph.realization">AdjacencyMatrixGraph</a></code>, <code><a href="realization/IncidenceMatrixGraph.html" title="class in ru.nsu.oop.graph.realization">IncidenceMatrixGraph</a></code></dd>
+<dd><code><a href="AbstractGraph.html" title="class in ru.nsu.oop.graph.model">AbstractGraph</a></code>, <code><a href="impl/AdjacencyListGraph.html" title="class in ru.nsu.oop.graph.model.impl">AdjacencyListGraph</a></code>, <code><a href="impl/AdjacencyMatrixGraph.html" title="class in ru.nsu.oop.graph.model.impl">AdjacencyMatrixGraph</a></code>, <code><a href="impl/IncidenceMatrixGraph.html" title="class in ru.nsu.oop.graph.model.impl">IncidenceMatrixGraph</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">Graph&lt;T&gt;</span></div>
@@ -97,18 +97,18 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addEdge(ru.nsu.oop.graph.Vertex,ru.nsu.oop.graph.Vertex)" class="member-name-link">addEdge</a><wbr>(<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexFrom,
- <a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexTo)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addEdge(ru.nsu.oop.graph.model.Vertex,ru.nsu.oop.graph.model.Vertex)" class="member-name-link">addEdge</a><wbr>(<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexFrom,
+ <a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexTo)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Добавляет ориентированное ребро между двумя вершинами.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addVertex(ru.nsu.oop.graph.Vertex)" class="member-name-link">addVertex</a><wbr>(<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addVertex(ru.nsu.oop.graph.model.Vertex)" class="member-name-link">addVertex</a><wbr>(<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Добавляет новую вершину в граф.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#neighbors(ru.nsu.oop.graph.Vertex)" class="member-name-link">neighbors</a><wbr>(<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#neighbors(ru.nsu.oop.graph.model.Vertex)" class="member-name-link">neighbors</a><wbr>(<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Возвращает список всех исходящих соседей указанной вершины.</div>
 </div>
@@ -119,22 +119,22 @@ loadScripts(document, 'script');</script>
 <div class="block">Считывает граф из файла фиксированного формата.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeEdge(ru.nsu.oop.graph.Vertex,ru.nsu.oop.graph.Vertex)" class="member-name-link">removeEdge</a><wbr>(<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexFrom,
- <a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexTo)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeEdge(ru.nsu.oop.graph.model.Vertex,ru.nsu.oop.graph.model.Vertex)" class="member-name-link">removeEdge</a><wbr>(<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexFrom,
+ <a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexTo)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Удаляет ориентированное ребро между двумя вершинами.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeVertex(ru.nsu.oop.graph.Vertex)" class="member-name-link">removeVertex</a><wbr>(<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeVertex(ru.nsu.oop.graph.model.Vertex)" class="member-name-link">removeVertex</a><wbr>(<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Удаляет вершину и все связанные с ней рёбра из графа.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#topologicalSorting()" class="member-name-link">topologicalSorting</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Выполняет топологическую сортировку вершин графа.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#vertices()" class="member-name-link">vertices</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Возвращает неизменяемый список всех вершин графа.</div>
@@ -154,9 +154,9 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="addVertex(ru.nsu.oop.graph.Vertex)">
+<section class="detail" id="addVertex(ru.nsu.oop.graph.model.Vertex)">
 <h3>addVertex</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addVertex</span><wbr><span class="parameters">(<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addVertex</span><wbr><span class="parameters">(<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</span></div>
 <div class="block">Добавляет новую вершину в граф.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -167,9 +167,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="removeVertex(ru.nsu.oop.graph.Vertex)">
+<section class="detail" id="removeVertex(ru.nsu.oop.graph.model.Vertex)">
 <h3>removeVertex</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeVertex</span><wbr><span class="parameters">(<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeVertex</span><wbr><span class="parameters">(<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</span></div>
 <div class="block">Удаляет вершину и все связанные с ней рёбра из графа.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -180,10 +180,10 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="addEdge(ru.nsu.oop.graph.Vertex,ru.nsu.oop.graph.Vertex)">
+<section class="detail" id="addEdge(ru.nsu.oop.graph.model.Vertex,ru.nsu.oop.graph.model.Vertex)">
 <h3>addEdge</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addEdge</span><wbr><span class="parameters">(<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexFrom,
- <a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexTo)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addEdge</span><wbr><span class="parameters">(<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexFrom,
+ <a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexTo)</span></div>
 <div class="block">Добавляет ориентированное ребро между двумя вершинами.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -195,10 +195,10 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="removeEdge(ru.nsu.oop.graph.Vertex,ru.nsu.oop.graph.Vertex)">
+<section class="detail" id="removeEdge(ru.nsu.oop.graph.model.Vertex,ru.nsu.oop.graph.model.Vertex)">
 <h3>removeEdge</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeEdge</span><wbr><span class="parameters">(<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexFrom,
- <a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexTo)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">removeEdge</span><wbr><span class="parameters">(<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexFrom,
+ <a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertexTo)</span></div>
 <div class="block">Удаляет ориентированное ребро между двумя вершинами.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -210,9 +210,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="neighbors(ru.nsu.oop.graph.Vertex)">
+<section class="detail" id="neighbors(ru.nsu.oop.graph.model.Vertex)">
 <h3>neighbors</h3>
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</span>&nbsp;<span class="element-name">neighbors</span><wbr><span class="parameters">(<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</span>&nbsp;<span class="element-name">neighbors</span><wbr><span class="parameters">(<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</span></div>
 <div class="block">Возвращает список всех исходящих соседей указанной вершины.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -243,7 +243,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="vertices()">
 <h3>vertices</h3>
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</span>&nbsp;<span class="element-name">vertices</span>()</div>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</span>&nbsp;<span class="element-name">vertices</span>()</div>
 <div class="block">Возвращает неизменяемый список всех вершин графа.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -254,7 +254,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="topologicalSorting()">
 <h3>topologicalSorting</h3>
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Vertex.html" title="class in ru.nsu.oop.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</span>&nbsp;<span class="element-name">topologicalSorting</span>()</div>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Vertex.html" title="class in ru.nsu.oop.graph.model">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</span>&nbsp;<span class="element-name">topologicalSorting</span>()</div>
 <div class="block">Выполняет топологическую сортировку вершин графа.</div>
 <dl class="notes">
 <dt>Returns:</dt>
