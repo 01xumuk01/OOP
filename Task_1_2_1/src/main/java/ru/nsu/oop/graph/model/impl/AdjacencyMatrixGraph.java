@@ -1,9 +1,9 @@
-package ru.nsu.oop.graph.realization;
+package ru.nsu.oop.graph.model.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import ru.nsu.oop.graph.AbstractGraph;
-import ru.nsu.oop.graph.Vertex;
+import ru.nsu.oop.graph.model.AbstractGraph;
+import ru.nsu.oop.graph.model.Vertex;
 
 /**
  * Реализация ориентированного графа на основе матрицы смежности.

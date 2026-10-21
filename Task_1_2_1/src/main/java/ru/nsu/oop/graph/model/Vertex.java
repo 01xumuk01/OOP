@@ -1,4 +1,4 @@
-package ru.nsu.oop.graph;
+package ru.nsu.oop.graph.model;
 
 /**
  * Вершина графа, содержащая уникальное имя и пользовательское значение.

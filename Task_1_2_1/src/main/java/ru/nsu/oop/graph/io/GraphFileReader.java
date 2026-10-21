@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Function;
-import ru.nsu.oop.graph.Graph;
-import ru.nsu.oop.graph.Vertex;
+import ru.nsu.oop.graph.model.Graph;
+import ru.nsu.oop.graph.model.Vertex;
 
 /**
  * Загрузчик графа из текстового файла фиксированного формата.

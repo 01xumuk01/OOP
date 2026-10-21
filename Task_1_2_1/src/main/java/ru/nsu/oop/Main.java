@@ -1,8 +1,8 @@
 package ru.nsu.oop;
 
-import ru.nsu.oop.graph.Graph;
-import ru.nsu.oop.graph.Vertex;
-import ru.nsu.oop.graph.realization.AdjacencyMatrixGraph;
+import ru.nsu.oop.graph.model.Graph;
+import ru.nsu.oop.graph.model.Vertex;
+import ru.nsu.oop.graph.model.impl.AdjacencyMatrixGraph;
 
 /**
  * Главный класс для демонстрации работы с графом.

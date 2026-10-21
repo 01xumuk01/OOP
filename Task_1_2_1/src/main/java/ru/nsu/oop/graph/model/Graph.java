@@ -1,4 +1,4 @@
-package ru.nsu.oop.graph;
+package ru.nsu.oop.graph.model;
 
 import java.io.IOException;
 import java.nio.file.Path;
