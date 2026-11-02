@@ -74,15 +74,15 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Возвращает значение, связанное с указанным ключом.</div>
 </dd>
-<dt><a href="ru/nsu/oop/Node.html#getKey()" class="member-name-link">getKey()</a> - Method in class ru.nsu.oop.<a href="ru/nsu/oop/Node.html" title="class in ru.nsu.oop">Node</a></dt>
+<dt><a href="ru/nsu/oop/HashTable.Node.html#getKey()" class="member-name-link">getKey()</a> - Method in class ru.nsu.oop.<a href="ru/nsu/oop/HashTable.Node.html" title="class in ru.nsu.oop">HashTable.Node</a></dt>
 <dd>
 <div class="block">Возвращает ключ узла.</div>
 </dd>
-<dt><a href="ru/nsu/oop/Node.html#getNext()" class="member-name-link">getNext()</a> - Method in class ru.nsu.oop.<a href="ru/nsu/oop/Node.html" title="class in ru.nsu.oop">Node</a></dt>
+<dt><a href="ru/nsu/oop/HashTable.Node.html#getNext()" class="member-name-link">getNext()</a> - Method in class ru.nsu.oop.<a href="ru/nsu/oop/HashTable.Node.html" title="class in ru.nsu.oop">HashTable.Node</a></dt>
 <dd>
 <div class="block">Возвращает следующий узел цепочки.</div>
 </dd>
-<dt><a href="ru/nsu/oop/Node.html#getValue()" class="member-name-link">getValue()</a> - Method in class ru.nsu.oop.<a href="ru/nsu/oop/Node.html" title="class in ru.nsu.oop">Node</a></dt>
+<dt><a href="ru/nsu/oop/HashTable.Node.html#getValue()" class="member-name-link">getValue()</a> - Method in class ru.nsu.oop.<a href="ru/nsu/oop/HashTable.Node.html" title="class in ru.nsu.oop">HashTable.Node</a></dt>
 <dd>
 <div class="block">Возвращает значение узла.</div>
 </dd>
@@ -101,6 +101,11 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создаёт пустую хеш-таблицу с начальной ёмкостью 16 корзин.</div>
 </dd>
+<dt><a href="ru/nsu/oop/HashTable.Node.html" class="type-name-link" title="class in ru.nsu.oop">HashTable.Node&lt;K,<wbr>V&gt;</a> - Class in <a href="ru/nsu/oop/package-summary.html">ru.nsu.oop</a></dt>
+<dd>
+<div class="block">Узел цепочки хеш-таблицы, содержащий ключ, значение
+ и ссылку на следующий узел.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
 <dl class="index">
@@ -111,12 +116,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:N">N</h2>
 <dl class="index">
-<dt><a href="ru/nsu/oop/Node.html" class="type-name-link" title="class in ru.nsu.oop">Node&lt;K,<wbr>V&gt;</a> - Class in <a href="ru/nsu/oop/package-summary.html">ru.nsu.oop</a></dt>
-<dd>
-<div class="block">Узел цепочки хеш-таблицы, содержащий ключ, значение
- и ссылку на следующий узел.</div>
-</dd>
-<dt><a href="ru/nsu/oop/Node.html#%3Cinit%3E(K,V,ru.nsu.oop.Node)" class="member-name-link">Node(K, V, Node&lt;K, V&gt;)</a> - Constructor for class ru.nsu.oop.<a href="ru/nsu/oop/Node.html" title="class in ru.nsu.oop">Node</a></dt>
+<dt><a href="ru/nsu/oop/HashTable.Node.html#%3Cinit%3E(K,V,ru.nsu.oop.HashTable.Node)" class="member-name-link">Node(K, V, HashTable.Node&lt;K, V&gt;)</a> - Constructor for class ru.nsu.oop.<a href="ru/nsu/oop/HashTable.Node.html" title="class in ru.nsu.oop">HashTable.Node</a></dt>
 <dd>
 <div class="block">Создаёт узел с указанными ключом, значением и следующим узлом.</div>
 </dd>
@@ -139,11 +139,11 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
-<dt><a href="ru/nsu/oop/Node.html#setNext(ru.nsu.oop.Node)" class="member-name-link">setNext(Node&lt;K, V&gt;)</a> - Method in class ru.nsu.oop.<a href="ru/nsu/oop/Node.html" title="class in ru.nsu.oop">Node</a></dt>
+<dt><a href="ru/nsu/oop/HashTable.Node.html#setNext(ru.nsu.oop.HashTable.Node)" class="member-name-link">setNext(HashTable.Node&lt;K, V&gt;)</a> - Method in class ru.nsu.oop.<a href="ru/nsu/oop/HashTable.Node.html" title="class in ru.nsu.oop">HashTable.Node</a></dt>
 <dd>
 <div class="block">Устанавливает ссылку на следующий узел.</div>
 </dd>
-<dt><a href="ru/nsu/oop/Node.html#setValue(V)" class="member-name-link">setValue(V)</a> - Method in class ru.nsu.oop.<a href="ru/nsu/oop/Node.html" title="class in ru.nsu.oop">Node</a></dt>
+<dt><a href="ru/nsu/oop/HashTable.Node.html#setValue(V)" class="member-name-link">setValue(V)</a> - Method in class ru.nsu.oop.<a href="ru/nsu/oop/HashTable.Node.html" title="class in ru.nsu.oop">HashTable.Node</a></dt>
 <dd>
 <div class="block">Заменяет значение узла.</div>
 </dd>
@@ -154,13 +154,13 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
+<dt><a href="ru/nsu/oop/HashTable.Node.html#toString()" class="member-name-link">toString()</a> - Method in class ru.nsu.oop.<a href="ru/nsu/oop/HashTable.Node.html" title="class in ru.nsu.oop">HashTable.Node</a></dt>
+<dd>
+<div class="block">Возвращает строковое представление пары ключ–значение.</div>
+</dd>
 <dt><a href="ru/nsu/oop/HashTable.html#toString()" class="member-name-link">toString()</a> - Method in class ru.nsu.oop.<a href="ru/nsu/oop/HashTable.html" title="class in ru.nsu.oop">HashTable</a></dt>
 <dd>
 <div class="block">Возвращает строку с парами таблицы, разделёнными запятыми.</div>
-</dd>
-<dt><a href="ru/nsu/oop/Node.html#toString()" class="member-name-link">toString()</a> - Method in class ru.nsu.oop.<a href="ru/nsu/oop/Node.html" title="class in ru.nsu.oop">Node</a></dt>
-<dd>
-<div class="block">Возвращает строковое представление пары ключ–значение.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:U">U</h2>
