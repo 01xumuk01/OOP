@@ -1,4 +1,4 @@
-package ru.nsu.oop;
+package ru.nsu.oop.hashtable;
 
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
@@ -70,6 +70,25 @@ public class HashTable<K, V>
     }
 
     /**
+     * Проверяет наличие ключа независимо от связанного с ним значения.
+     *
+     * @param key проверяемый ключ
+     * @return {@code true}, если ключ присутствует в таблице
+     * @throws NullPointerException если ключ равен {@code null}
+     */
+    public boolean containsKey(K key) {
+        int index = Math.floorMod(key.hashCode(), capacity);
+        Node<K, V> current = buckets.get(index);
+        while (current != null) {
+            if (current.getKey().equals(key)) {
+                return true;
+            }
+            current = current.getNext();
+        }
+        return false;
+    }
+
+    /**
      * Добавляет пару ключ–значение.
      * Если ключ уже присутствует, заменяет его значение.
      *
@@ -108,6 +127,22 @@ public class HashTable<K, V>
     }
 
     /**
+     * Обновляет значение существующего ключа.
+     *
+     * @param key ключ обновляемой пары
+     * @param value новое значение
+     * @throws IllegalArgumentException если ключ отсутствует
+     * @throws NullPointerException если ключ равен {@code null}
+     */
+    public void update(K key, V value) {
+        if (!containsKey(key)) {
+            throw new IllegalArgumentException("Ключ отсутствует");
+        }
+
+        put(key, value);
+    }
+
+    /**
      * Удаляет пару с указанным ключом.
      * Если ключ отсутствует, таблица сохраняет прежнее состояние.
      *
@@ -134,41 +169,6 @@ public class HashTable<K, V>
             previous = current;
             current = current.getNext();
         }
-    }
-
-    /**
-     * Проверяет наличие ключа независимо от связанного с ним значения.
-     *
-     * @param key проверяемый ключ
-     * @return {@code true}, если ключ присутствует в таблице
-     * @throws NullPointerException если ключ равен {@code null}
-     */
-    public boolean containsKey(K key) {
-        int index = Math.floorMod(key.hashCode(), capacity);
-        Node<K, V> current = buckets.get(index);
-        while (current != null) {
-            if (current.getKey().equals(key)) {
-                return true;
-            }
-            current = current.getNext();
-        }
-        return false;
-    }
-
-    /**
-     * Обновляет значение существующего ключа.
-     *
-     * @param key ключ обновляемой пары
-     * @param value новое значение
-     * @throws IllegalArgumentException если ключ отсутствует
-     * @throws NullPointerException если ключ равен {@code null}
-     */
-    public void update(K key, V value) {
-        if (!containsKey(key)) {
-            throw new IllegalArgumentException("Ключ отсутствует");
-        }
-
-        put(key, value);
     }
 
     /**
@@ -211,99 +211,6 @@ public class HashTable<K, V>
     @Override
     public Iterator<Node<K, V>> iterator() {
         return new HashIterator();
-    }
-
-    /**
-     * Итератор, последовательно обходящий корзины и цепочки узлов.
-     */
-    private class HashIterator implements Iterator<Node<K, V>> {
-        private final int expectedModCount;
-        private int bucketIndex;
-        private Node<K, V> nextNode;
-
-        /**
-         * Сохраняет счётчик изменений и находит первый узел для выдачи.
-         */
-        private HashIterator() {
-            expectedModCount = modCount;
-            bucketIndex = 0;
-            nextNode = null;
-            findNextBucket();
-        }
-
-        /**
-         * Находит следующую непустую корзину, если текущая цепочка закончилась.
-         */
-        private void findNextBucket() {
-            while (nextNode == null && bucketIndex < capacity) {
-                nextNode = buckets.get(bucketIndex);
-                bucketIndex += 1;
-            }
-        }
-
-        /**
-         * Проверяет, сохраняется ли структура таблицы с момента создания итератора.
-         *
-         * @throws ConcurrentModificationException если структура таблицы изменилась
-         */
-        private void checkModification() {
-            if (expectedModCount != modCount) {
-                throw new ConcurrentModificationException(
-                        "Во время итерации хеш-таблица была изменена!");
-            }
-        }
-
-        /**
-         * Проверяет наличие следующей пары, сохраняя позицию обхода.
-         *
-         * @return {@code true}, если остались элементы
-         * @throws ConcurrentModificationException если структура таблицы изменилась
-         */
-        @Override
-        public boolean hasNext() {
-            checkModification();
-            return nextNode != null;
-        }
-
-        /**
-         * Возвращает следующую пару и продвигает позицию обхода.
-         * Ключ и значение передаются в новый узел без копирования самих объектов.
-         *
-         * @return копия следующего узла со ссылкой {@code next}, равной {@code null}
-         * @throws ConcurrentModificationException если структура таблицы изменилась
-         * @throws NoSuchElementException если элементы закончились
-         */
-        @Override
-        public Node<K, V> next() {
-            checkModification();
-            if (nextNode == null) {
-                throw new NoSuchElementException("Элементы закончились");
-            }
-
-            Node<K, V> current = nextNode;
-            nextNode = nextNode.getNext();
-            findNextBucket();
-            return new Node<>(current.getKey(), current.getValue(), null);
-        }
-    }
-
-    /**
-     * Проверяет наличие пары с указанными ключом и значением.
-     *
-     * @param key проверяемый ключ
-     * @param value проверяемое значение
-     * @return {@code true}, если такая пара присутствует
-     */
-    private boolean containsEntry(Object key, Object value) {
-        int index = Math.floorMod(key.hashCode(), capacity);
-        Node<K, V> current = buckets.get(index);
-        while (current != null) {
-            if (current.getKey().equals(key)) {
-                return Objects.equals(current.getValue(), value);
-            }
-            current = current.getNext();
-        }
-        return false;
     }
 
     /**
@@ -371,6 +278,25 @@ public class HashTable<K, V>
             }
         }
         return result.toString();
+    }
+
+    /**
+     * Проверяет наличие пары с указанными ключом и значением.
+     *
+     * @param key проверяемый ключ
+     * @param value проверяемое значение
+     * @return {@code true}, если такая пара присутствует
+     */
+    private boolean containsEntry(Object key, Object value) {
+        int index = Math.floorMod(key.hashCode(), capacity);
+        Node<K, V> current = buckets.get(index);
+        while (current != null) {
+            if (current.getKey().equals(key)) {
+                return Objects.equals(current.getValue(), value);
+            }
+            current = current.getNext();
+        }
+        return false;
     }
 
     /**
@@ -451,6 +377,80 @@ public class HashTable<K, V>
         @Override
         public String toString() {
             return key + " -> " + value;
+        }
+    }
+
+    /**
+     * Итератор, последовательно обходящий корзины и цепочки узлов.
+     */
+    private class HashIterator implements Iterator<Node<K, V>> {
+        private final int expectedModCount;
+        private int bucketIndex;
+        private Node<K, V> nextNode;
+
+        /**
+         * Сохраняет счётчик изменений и находит первый узел для выдачи.
+         */
+        private HashIterator() {
+            expectedModCount = modCount;
+            bucketIndex = 0;
+            nextNode = null;
+            findNextBucket();
+        }
+
+        /**
+         * Находит следующую непустую корзину, если текущая цепочка закончилась.
+         */
+        private void findNextBucket() {
+            while (nextNode == null && bucketIndex < capacity) {
+                nextNode = buckets.get(bucketIndex);
+                bucketIndex += 1;
+            }
+        }
+
+        /**
+         * Проверяет, сохраняется ли структура таблицы с момента создания итератора.
+         *
+         * @throws ConcurrentModificationException если структура таблицы изменилась
+         */
+        private void checkModification() {
+            if (expectedModCount != modCount) {
+                throw new ConcurrentModificationException(
+                        "Во время итерации хеш-таблица была изменена!");
+            }
+        }
+
+        /**
+         * Проверяет наличие следующей пары, сохраняя позицию обхода.
+         *
+         * @return {@code true}, если остались элементы
+         * @throws ConcurrentModificationException если структура таблицы изменилась
+         */
+        @Override
+        public boolean hasNext() {
+            checkModification();
+            return nextNode != null;
+        }
+
+        /**
+         * Возвращает следующую пару и продвигает позицию обхода.
+         * Ключ и значение передаются в новый узел без копирования самих объектов.
+         *
+         * @return копия следующего узла со ссылкой {@code next}, равной {@code null}
+         * @throws ConcurrentModificationException если структура таблицы изменилась
+         * @throws NoSuchElementException если элементы закончились
+         */
+        @Override
+        public Node<K, V> next() {
+            checkModification();
+            if (nextNode == null) {
+                throw new NoSuchElementException("Элементы закончились");
+            }
+
+            Node<K, V> current = nextNode;
+            nextNode = nextNode.getNext();
+            findNextBucket();
+            return new Node<>(current.getKey(), current.getValue(), null);
         }
     }
 }

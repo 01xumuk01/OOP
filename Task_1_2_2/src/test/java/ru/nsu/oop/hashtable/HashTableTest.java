@@ -1,4 +1,4 @@
-package ru.nsu.oop;
+package ru.nsu.oop.hashtable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -16,7 +16,7 @@ import java.util.Random;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import ru.nsu.oop.HashTable.Node;
+import ru.nsu.oop.hashtable.HashTable.Node;
 
 class HashTableTest {
     private static final class CollisionKey {
