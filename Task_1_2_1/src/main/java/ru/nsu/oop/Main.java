@@ -1,17 +1,32 @@
 package ru.nsu.oop;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import ru.nsu.oop.graph.model.Graph;
+import ru.nsu.oop.graph.model.Vertex;
+import ru.nsu.oop.graph.model.impl.AdjacencyMatrixGraph;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+/**
+ * Главный класс для демонстрации работы с графом.
+ */
+public class Main {
+
+    /**
+     * Конструктор по умолчанию.
+     */
+    public Main() {
+    }
+
+    /**
+     * Точка входа в программу.
+     *
+     * @param args аргументы командной строки
+     */
+    public static void main(String[] args) {
+        Graph<Integer> graph = new AdjacencyMatrixGraph<>();
+        Vertex<Integer> a = new Vertex<>("A", 1);
+        Vertex<Integer> b = new Vertex<>("B", 2);
+        graph.addVertex(a);
+        graph.addVertex(b);
+        graph.addEdge(a, b);
+        System.out.print(graph);
     }
 }
