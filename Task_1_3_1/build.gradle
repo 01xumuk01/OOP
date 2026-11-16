@@ -29,3 +29,7 @@ jacocoTestReport {
         html.required = true
     }
 }
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

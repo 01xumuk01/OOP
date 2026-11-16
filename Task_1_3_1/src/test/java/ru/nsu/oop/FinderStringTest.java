@@ -19,6 +19,7 @@ import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import ru.nsu.oop.finder.FinderString;
 
 /** Проверяет поиск подстроки в UTF-8-файлах. */
 @Execution(ExecutionMode.SAME_THREAD)
@@ -32,22 +33,22 @@ class FinderStringTest {
     void findsAllOccurrences(String text, String pattern, List<Long> expected)
             throws IOException {
         Path file = writeInput(text);
-        assertEquals(expected, FinderString.Find(pattern, file));
+        assertEquals(expected, FinderString.find(pattern, file));
     }
 
     @Test
     @DisplayName("Повторный поиск сбрасывает состояние и сохраняет прошлый результат")
     void repeatedCallsPreservePreviousResult() throws IOException {
         Path firstFile = writeInput("aaaa");
-        List<Long> first = FinderString.Find("aa", firstFile);
+        List<Long> first = FinderString.find("aa", firstFile);
 
         Path secondFile = tempDir.resolve("second.txt");
         Files.writeString(secondFile, "абракадабра", StandardCharsets.UTF_8);
-        List<Long> second = FinderString.Find("бра", secondFile);
+        List<Long> second = FinderString.find("бра", secondFile);
 
         assertEquals(List.of(0L, 1L, 2L), first);
         assertEquals(List.of(1L, 8L), second);
-        assertEquals(List.of(), FinderString.Find("xyz", secondFile));
+        assertEquals(List.of(), FinderString.find("xyz", secondFile));
         assertEquals(List.of(0L, 1L, 2L), first);
     }
 
@@ -57,7 +58,7 @@ class FinderStringTest {
         Path file = writeInput("abc");
 
         assertThrows(IllegalArgumentException.class,
-                () -> FinderString.Find("", file));
+                () -> FinderString.find("", file));
     }
 
     @Test
@@ -66,7 +67,7 @@ class FinderStringTest {
         Path file = tempDir.resolve("missing.txt");
 
         assertThrows(NoSuchFileException.class,
-                () -> FinderString.Find("abc", file));
+                () -> FinderString.find("abc", file));
     }
 
     @Test
@@ -78,7 +79,7 @@ class FinderStringTest {
         Path file = directory.resolve("текст.txt");
         Files.writeString(file, "абракадабра", StandardCharsets.UTF_8);
 
-        assertEquals(List.of(1L, 8L), FinderString.Find("бра", file));
+        assertEquals(List.of(1L, 8L), FinderString.find("бра", file));
     }
 
     @Test
@@ -86,8 +87,8 @@ class FinderStringTest {
     void findsSupplementaryCharactersAfterLongPrefix() throws IOException {
         Path file = writeInput("x".repeat(8191) + "𐐀abc😀z");
 
-        assertEquals(List.of(8191L), FinderString.Find("𐐀a", file));
-        assertEquals(List.of(8195L), FinderString.Find("😀z", file));
+        assertEquals(List.of(8191L), FinderString.find("𐐀a", file));
+        assertEquals(List.of(8195L), FinderString.find("😀z", file));
     }
 
     @Test
@@ -109,7 +110,7 @@ class FinderStringTest {
 
         assertEquals(
                 List.of(2000000L, 2001003L),
-                FinderString.Find("бра", file)
+                FinderString.find("бра", file)
         );
     }
 
