@@ -12,44 +12,6 @@ import java.util.ArrayList;
  * Файл читается последовательно без загрузки целиком в память.
  */
 public class FinderString {
-    /**
-     * Добавляет очередную кодовую точку в окно и проверяет совпадение.
-     *
-     * @param symbol очередная кодовая точка файла
-     * @param window текущее скользящее окно
-     * @param pattern кодовые точки искомой подстроки
-     * @param answer список найденных индексов
-     * @param position индекс текущей кодовой точки файла
-     * @param m длина искомой подстроки в кодовых точках
-     */
-    private static void processing(int symbol,
-                                   ArrayList<Integer> window,
-                                   ArrayList<Integer> pattern,
-                                   ArrayList<Long> answer,
-                                   long position,
-                                   int m
-                                   ) {
-        boolean flag = false;
-
-        window.add(symbol);
-
-        if (window.size() > m) {
-            window.remove(0);
-        }
-
-        if (window.size() == m) {
-            for (int i = 0; i < m; i++) {
-                if (!window.get(i).equals(pattern.get(i))) {
-                    flag = true;
-                    break;
-                }
-            }
-
-            if (!flag) {
-                answer.add(position - m + 1);
-            }
-        }
-    }
 
     /**
      * Находит все вхождения заданной подстроки в файле.
@@ -110,5 +72,45 @@ public class FinderString {
         }
 
         return answer;
+    }
+
+    /**
+     * Добавляет очередную кодовую точку в окно и проверяет совпадение.
+     *
+     * @param symbol очередная кодовая точка файла
+     * @param window текущее скользящее окно
+     * @param pattern кодовые точки искомой подстроки
+     * @param answer список найденных индексов
+     * @param position индекс текущей кодовой точки файла
+     * @param m длина искомой подстроки в кодовых точках
+     */
+    private static void processing(
+            int symbol,
+            ArrayList<Integer> window,
+            ArrayList<Integer> pattern,
+            ArrayList<Long> answer,
+            long position,
+            int m
+    ) {
+        boolean flag = false;
+
+        window.add(symbol);
+
+        if (window.size() > m) {
+            window.remove(0);
+        }
+
+        if (window.size() == m) {
+            for (int i = 0; i < m; i++) {
+                if (!window.get(i).equals(pattern.get(i))) {
+                    flag = true;
+                    break;
+                }
+            }
+
+            if (!flag) {
+                answer.add(position - m + 1);
+            }
+        }
     }
 }
