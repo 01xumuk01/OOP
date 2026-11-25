@@ -148,26 +148,23 @@ public class RecordBook {
     }
 
     /**
-     * Вычисляет среднее арифметическое выставленных оценок, пропуская значения 0 и 1.
+     * Вычисляет средний балл по выставленным оценкам за экзамены и дифзачёты.
      *
-     * @return средний балл или 0.0, если нет оценок для расчёта
+     * @return средний балл или 0.0, если таких оценок нет
      */
     public Double getAverageScore() {
         int sumScore = 0;
-        double countScore = 0.0;
+        int countScore = 0;
 
-        for (int mark : currentResults.values()) {
-            if (mark != 0 && mark != 1)  {
-                sumScore += mark;
-                countScore += 1.0;
+        for (Map.Entry<Assessment, Integer> entry : currentResults.entrySet()) {
+            ControlType type = entry.getKey().controlType();
+            if (type == ControlType.EXAM || type == ControlType.DIFF_TEST) {
+                sumScore += entry.getValue();
+                countScore++;
             }
         }
 
-        if (countScore == 0.0) {
-            return 0.0;
-        }
-
-        return (sumScore / countScore);
+        return countScore == 0 ? 0.0 : (double) sumScore / countScore;
     }
 
     /**
