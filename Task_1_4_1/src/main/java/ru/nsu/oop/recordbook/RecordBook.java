@@ -2,8 +2,6 @@ package ru.nsu.oop.recordbook;
 
 import java.util.*;
 
-import static java.lang.Math.max;
-
 /**
  * Электронная зачётная книжка студента с учебным планом и выставленными результатами.
  * Записи плана хранятся отдельно от оценок, чтобы учитывать и предстоящие контроли.
@@ -17,7 +15,7 @@ public class RecordBook {
     private final List<Assessment> finalAssessments;
 
     private int finalSemester;
-    private Assessment VKR;
+    private Assessment thesisDefense;
 
     /**
      * Создаёт зачётку по плану и уже выставленным результатам.
@@ -35,7 +33,7 @@ public class RecordBook {
      * @throws IllegalArgumentException если строка имеет неверный формат, вид контроля
      *     неизвестен, контроль отсутствует в плане или оценка выходит за допустимые пределы
      */
-    public RecordBook (
+    public RecordBook(
             List<String> educationalProgram,
             Integer currentSemester,
             Boolean budgetBasedEducation,
@@ -55,17 +53,19 @@ public class RecordBook {
                 );
             }
 
-            ControlType controlType = switch (parts[2].toLowerCase())
-            {
+            ControlType controlType = switch (parts[2].toLowerCase()) {
                 case "задание", "таск", "таска" -> ControlType.ASSIGNMENT;
                 case "контрольная", "кр", "контроша" -> ControlType.CONTROL_WORK;
                 case "коллоквиум", "коллок" -> ControlType.COLLOQUIUM;
                 case "экзамен", "экз", "пытка" -> ControlType.EXAM;
                 case "дифф зачет", "дифф зачёт" -> ControlType.DIFF_TEST;
                 case "зачет", "зачёт" -> ControlType.TEST;
-                case "защита отчета по практике", "защита практики", "практика" -> ControlType.PRACTICE_REPORT_DEFENSE;
+                case "защита отчета по практике",
+                     "защита практики",
+                     "практика" -> ControlType.PRACTICE_REPORT_DEFENSE;
                 case "защита вкр", "диплом", "вкр" -> ControlType.THESIS_DEFENSE;
-                default -> throw new IllegalArgumentException("Неизвестная форма контроля: " + parts[2]);
+                default -> throw new IllegalArgumentException(
+                        "Неизвестная форма контроля: " + parts[2]);
             };
 
             Assessment base = new Assessment(parts[0], Integer.parseInt(parts[1]), controlType);
@@ -80,10 +80,10 @@ public class RecordBook {
             }
 
             if (base.controlType() == ControlType.THESIS_DEFENSE) {
-                this.VKR = base;
+                this.thesisDefense = base;
             }
 
-            this.finalSemester = max(base.semester(), this.finalSemester);
+            this.finalSemester = Math.max(base.semester(), this.finalSemester);
         }
 
         this.finalAssessments.addAll(latestByDiscipline.values());
@@ -103,17 +103,19 @@ public class RecordBook {
                 );
             }
 
-            ControlType controlType = switch (parts[2].toLowerCase())
-            {
+            ControlType controlType = switch (parts[2].toLowerCase()) {
                 case "задание", "таск", "таска" -> ControlType.ASSIGNMENT;
                 case "контрольная", "кр", "контроша" -> ControlType.CONTROL_WORK;
                 case "коллоквиум", "коллок" -> ControlType.COLLOQUIUM;
                 case "экзамен", "экз", "пытка" -> ControlType.EXAM;
                 case "дифф зачет", "дифф зачёт" -> ControlType.DIFF_TEST;
                 case "зачет", "зачёт" -> ControlType.TEST;
-                case "защита отчета по практике", "защита практики", "практика" -> ControlType.PRACTICE_REPORT_DEFENSE;
+                case "защита отчета по практике",
+                     "защита практики",
+                     "практика" -> ControlType.PRACTICE_REPORT_DEFENSE;
                 case "защита вкр", "диплом", "вкр" -> ControlType.THESIS_DEFENSE;
-                default -> throw new IllegalArgumentException("Неизвестная форма контроля: " + parts[2]);
+                default -> throw new IllegalArgumentException(
+                        "Неизвестная форма контроля: " + parts[2]);
             };
 
             int mark = Integer.parseInt(parts[3]);
@@ -126,15 +128,14 @@ public class RecordBook {
                 );
             }
 
-            if
-            (
+            if (
                     (controlType.equals(ControlType.TEST) && (mark != 0 && mark != 1))
                             ||
                     (
-                            (controlType.equals(ControlType.EXAM) ||
-                             controlType.equals(ControlType.DIFF_TEST) ||
-                             controlType.equals(ControlType.THESIS_DEFENSE))
-                                    &&
+                            (controlType.equals(ControlType.EXAM)
+                            || controlType.equals(ControlType.DIFF_TEST)
+                            || controlType.equals(ControlType.THESIS_DEFENSE))
+                                &&
                             (mark < 2 || mark > 5)
                     )
             ) {
@@ -186,8 +187,8 @@ public class RecordBook {
         Boolean base = true;
         for (Assessment assessment : educationalProgram) {
             if (
-                    assessment.semester() != currentSemester - 1 &&
-                    assessment.semester() != currentSemester - 2
+                    assessment.semester() != currentSemester - 1
+                    && assessment.semester() != currentSemester - 2
             ) {
                 continue;
             }
@@ -247,15 +248,15 @@ public class RecordBook {
             }
         }
 
-        if (VKR == null) {
+        if (thesisDefense == null) {
             return false;
         }
 
-        if (!currentResults.containsKey(VKR)) {
+        if (!currentResults.containsKey(thesisDefense)) {
             return countGreatMarks * 4 >= countMarks * 3;
         }
 
-        if (currentResults.get(VKR) != 5) {
+        if (currentResults.get(thesisDefense) != 5) {
             return false;
         }
 
@@ -285,9 +286,9 @@ public class RecordBook {
 
             ControlType controlType = i.controlType();
 
-            if (!(controlType.equals(ControlType.EXAM) ||
-                controlType.equals(ControlType.DIFF_TEST) ||
-                controlType.equals(ControlType.TEST))) {
+            if (!(controlType.equals(ControlType.EXAM)
+                || controlType.equals(ControlType.DIFF_TEST)
+                || controlType.equals(ControlType.TEST))) {
                 continue;
             }
 
@@ -297,8 +298,8 @@ public class RecordBook {
                 return false;
             }
 
-            if (controlType.equals(ControlType.EXAM) ||
-                controlType.equals(ControlType.DIFF_TEST)) {
+            if (controlType.equals(ControlType.EXAM)
+                || controlType.equals(ControlType.DIFF_TEST)) {
                 if (mark < 4) {
                     return false;
                 }

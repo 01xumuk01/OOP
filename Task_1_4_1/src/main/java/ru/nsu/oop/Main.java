@@ -1,5 +1,6 @@
 package ru.nsu.oop;
 
+import java.util.List;
 import ru.nsu.oop.recordbook.RecordBook;
 
 import java.util.List;

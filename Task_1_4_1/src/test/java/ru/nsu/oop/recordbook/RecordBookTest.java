@@ -38,17 +38,17 @@ class RecordBookTest {
 
     @ParameterizedTest(name = "семестр {0}, бюджет {1}, экзамены {2}/{3}: {4}")
     @CsvSource({
-            "4, false, 4, 5, true",
-            "4, true,  4, 5, false",
-            "2, false,  ,  , false",
-            "4, false, 3, 5, false",
-            "4, false, 4, 2, false",
-            "4, false, 4,  , false"
+        "4, false, 4, 5, true",
+        "4, true,  4, 5, false",
+        "2, false,  ,  , false",
+        "4, false, 3, 5, false",
+        "4, false, 4, 2, false",
+        "4, false, 4,  , false"
     })
     void checksBudgetTransfer(
             int semester, boolean budget, Integer secondExam, Integer thirdExam, boolean expected
     ) {
-        var plan = List.of("История, 1, экзамен", "Матан, 2, экзамен", "ОС, 3, экзамен",
+        final var plan = List.of("История, 1, экзамен", "Матан, 2, экзамен", "ОС, 3, экзамен",
                 "Алгебра, 3, дифф зачёт", "Сети, 4, экзамен");
         var results = new ArrayList<>(List.of("История, 1, экзамен, 3"));
         if (semester == 4) {
@@ -64,14 +64,14 @@ class RecordBookTest {
 
     @ParameterizedTest(name = "итоговые 5/5/{0}/{1}, ВКР {2}: {3}")
     @CsvSource({
-            "4,  ,  , true",
-            "4, 5,  , true",
-            "4, 4,  , false",
-            "3, 5,  , false",
-            "2, 5,  , false",
-            "4, 5, 5, true",
-            "4, 5, 4, false",
-            "4, 4, 5, false"
+        "4,  ,  , true",
+        "4, 5,  , true",
+        "4, 4,  , false",
+        "3, 5,  , false",
+        "2, 5,  , false",
+        "4, 5, 5, true",
+        "4, 5, 4, false",
+        "4, 4, 5, false"
     })
     void predictsHonorsDegree(
             int physics, Integer systems, Integer thesis, boolean expected
@@ -110,20 +110,20 @@ class RecordBookTest {
 
     @ParameterizedTest(name = "семестр {0}, экзамен {1}, дифзачёт {2}, зачёт {3}: {4}")
     @CsvSource({
-            "8, 4, 5, 1, true",
-            "8, 3, 5, 1, false",
-            "8, 5, 2, 1, false",
-            "8, 5, 5, 0, false",
-            "8,  , 5, 1, false",
-            "8, 5,  , 1, false",
-            "8, 5, 5,  , false",
-            "1,  ,  ,  , false",
-            "9, 4, 5, 1, false"
+        "8, 4, 5, 1, true",
+        "8, 3, 5, 1, false",
+        "8, 5, 2, 1, false",
+        "8, 5, 5, 0, false",
+        "8,  , 5, 1, false",
+        "8, 5,  , 1, false",
+        "8, 5, 5,  , false",
+        "1,  ,  ,  , false",
+        "9, 4, 5, 1, false"
     })
     void checksScholarship(
             int semester, Integer exam, Integer diffTest, Integer pass, boolean expected
     ) {
-        var plan = List.of("ОС, 7, экзамен", "Сети, 7, дифф зачёт", "Английский, 7, зачёт",
+        final var plan = List.of("ОС, 7, экзамен", "Сети, 7, дифф зачёт", "Английский, 7, зачёт",
                 "ОС, 7, задание", "ОС, 7, контрольная", "ОС, 7, коллоквиум",
                 "Практика, 7, защита практики", "Матан, 6, экзамен", "ВКР, 8, защита ВКР");
         var results = new ArrayList<String>();
@@ -151,17 +151,17 @@ class RecordBookTest {
 
     @ParameterizedTest(name = "{0} / {1}")
     @CsvSource(delimiter = '|', value = {
-            "Матан, 1 | Матан, 1, экзамен, 5",
-            "Матан, 1, неизвестно | Матан, 1, экзамен, 5",
-            "Матан, 1, экзамен | Матан, 1, экзамен",
-            "Матан, 1, экзамен | Матан, 1, неизвестно, 5",
-            "Матан, 1, экзамен | Матан, 2, экзамен, 5",
-            "Матан, 1, экзамен | Матан, 1, экзамен, пять",
-            "Матан, 1, экзамен | Матан, 1, экзамен, 1",
-            "Матан, 1, экзамен | Матан, 1, экзамен, 6",
-            "Алгебра, 1, дифф зачёт | Алгебра, 1, дифф зачёт, 1",
-            "Физкультура, 1, зачёт | Физкультура, 1, зачёт, 2",
-            "ВКР, 8, защита ВКР | ВКР, 8, защита ВКР, 6"
+        "Матан, 1 | Матан, 1, экзамен, 5",
+        "Матан, 1, неизвестно | Матан, 1, экзамен, 5",
+        "Матан, 1, экзамен | Матан, 1, экзамен",
+        "Матан, 1, экзамен | Матан, 1, неизвестно, 5",
+        "Матан, 1, экзамен | Матан, 2, экзамен, 5",
+        "Матан, 1, экзамен | Матан, 1, экзамен, пять",
+        "Матан, 1, экзамен | Матан, 1, экзамен, 1",
+        "Матан, 1, экзамен | Матан, 1, экзамен, 6",
+        "Алгебра, 1, дифф зачёт | Алгебра, 1, дифф зачёт, 1",
+        "Физкультура, 1, зачёт | Физкультура, 1, зачёт, 2",
+        "ВКР, 8, защита ВКР | ВКР, 8, защита ВКР, 6"
     })
     void rejectsInvalidInput(String planEntry, String resultEntry) {
         assertThrows(IllegalArgumentException.class,
